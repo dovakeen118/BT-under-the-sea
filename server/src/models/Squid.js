@@ -13,7 +13,9 @@ class Squid extends Model {
       properties: {
         name: { type: "string", minLength: 1 },
         species: { type: "string", minLength: 1 },
-        victories: {
+        victories: { type: "string" },
+
+        specialPower: {
           type: "string",
           enum: ["ink", "camouflage", "bioluminescence"],
         },
