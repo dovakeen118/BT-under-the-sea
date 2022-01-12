@@ -8,6 +8,8 @@ module.exports = {
       current: "currentColor",
       transparent: "transparent",
       white: colors.white,
+      cognac: "#4C342F",
+      peach: "#E9967A",
       sage: "#d3dacd",
       teal: "#3C7882",
     },
