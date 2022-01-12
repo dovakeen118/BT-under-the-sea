@@ -16,7 +16,7 @@
     "titleBar.inactiveForeground": "#15202b99"
   },
   "peacock.color": "#f9e64f",
-  "window.title": "e2e${separator}Consultancy Breakable Toy",
+  "window.title": "e2e${separator}Under the Sea",
   "eslint.format.enable": true,
   "eslint.packageManager": "yarn",
   "eslint.useESLintClass": true,

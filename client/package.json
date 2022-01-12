@@ -10,7 +10,7 @@
   },
   "license": "UNLICENSED",
   "private": true,
-  "name": "consulting-breakable-toy-client",
+  "name": "under-the-sea-client",
   "version": "0.0.1",
   "engines": {
     "node": "^16.13"

@@ -23,7 +23,7 @@
   "private": true,
   "type": "module",
   "version": "0.0.1",
-  "name": "consultancy-breakable-toy-server",
+  "name": "under-the-sea-server",
   "engines": {
     "node": "^16.13"
   },
