@@ -48,7 +48,7 @@ export class ApiClient {
     }
 
     return axios.create({
-      baseURL: `${config.baseServerUri}/api/v1`,
+      baseURL: config.apiClient.baseUri,
       headers,
       withCredentials: true,
     });

@@ -1,5 +1,8 @@
-const config = {
+export const config = {
   env: process.env.NODE_ENV || "development",
+  apiClient: {
+    baseUri: "/api/v1",
+  },
   validation: {
     email: {
       regexp: {
@@ -8,5 +11,3 @@ const config = {
     },
   },
 };
-
-export default config;
