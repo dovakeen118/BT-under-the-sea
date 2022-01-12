@@ -2,17 +2,17 @@ import React from "react";
 
 import { Link } from "react-router-dom";
 
-const TopBar = () => (
-  <div className="top-bar">
-    <div className="top-bar-left">
-      <ul className="menu">
-        <li className="menu-text">App</li>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-      </ul>
+export function TopBar() {
+  return (
+    <div className="top-bar">
+      <div className="top-bar-left">
+        <ul className="menu">
+          <li className="menu-text">App</li>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+        </ul>
+      </div>
     </div>
-  </div>
-);
-
-export default TopBar;
+  );
+}
