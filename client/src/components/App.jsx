@@ -11,7 +11,13 @@ import { SquidList } from "./squids/SquidList";
 
 import "../style/main.pcss";
 
-function App() {
+const App = () => {
+  /*
+  Defaults:
+  - retry: false because we don't want to retry on network errors
+  - refetchOnWindowFocus: true because we want to refetch data on window focus -- this easily hides
+    bugs in development
+  */
   const queryClient = new QueryClient({
     defaultOptions: { queries: { retry: false, refetchOnWindowFocus: false } },
   });
@@ -27,7 +33,7 @@ function App() {
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
-}
+};
 
 // eslint-disable-next-line import/no-default-export
 export default hot(App);
