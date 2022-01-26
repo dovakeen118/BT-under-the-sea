@@ -7,7 +7,7 @@ import { Factory as RosieFactory } from "rosie";
 // if the organization does not have an id, both the user and the organization are inserted (and related).
 const insertGraphOptions = { relate: true };
 
-class Factory {
+export class Factory {
   constructor(TargetModel) {
     this.TargetModel = TargetModel;
     this.targetModelName = new TargetModel().constructor.name;
@@ -30,13 +30,19 @@ class Factory {
   /**
    * Create many instances
    *
+   * @param {Number} number - desired number of objects
    * @param {Array?} overrides - obj if applied to all instances and array otherwise
    * @param {Object} options - Rosie factory options
    * @return {Array} instances - persisted objects
    * @memberof Factory
    */
-  async createMany(overrides, options) {
-    const instances = overrides.map(async (override) => this.build(override, options));
+  async createMany(number, overrides, options) {
+    const instances = [...Array(number)].map(async (num, index) => {
+      if (Array.isArray(overrides)) {
+        return this.build(overrides[index], options);
+      }
+      return this.build(overrides, options);
+    });
     const resolvedInstances = await Promise.all(instances);
 
     return this.TargetModel.query().insertGraphAndFetch(resolvedInstances, insertGraphOptions);
@@ -59,5 +65,3 @@ class Factory {
     return this.TargetModel.query().insertGraphAndFetch(resolvedInstances, insertGraphOptions);
   }
 }
-
-export { Factory };

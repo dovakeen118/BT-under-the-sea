@@ -5,7 +5,7 @@ import { config } from "../config.js";
 export const addExpressSession = (app) => {
   app.use(
     session({
-      name: "consultancy-breakable-toy-session",
+      name: "under-the-sea-session",
       keys: [config.session.secret],
       resave: true,
       maxAge: config.maxAge,
