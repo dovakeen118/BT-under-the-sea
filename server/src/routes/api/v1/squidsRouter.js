@@ -8,17 +8,16 @@ export const squidsRouter = new express.Router();
 squidsRouter.get(
   "/",
   nextWrapper(async (req, res) => {
+    const offset = req.query.offset || 0
+    const limit = req.query.limit || 10
+    
     const squidsQuery = Squid.query();
-    if (req.query.offset) {
-      const [totalSquidCount, squids] = await Promise.all([
-        squidsQuery.resultSize(),
-        squidsQuery.offset(req.query.offset).limit(req.query.limit),
-      ]);
+    const [totalSquidCount, squids] = await Promise.all([
+      squidsQuery.resultSize(),
+      squidsQuery.offset(offset).limit(limit),
+    ]);
 
-      const pageCount = Math.ceil(totalSquidCount / req.query.limit);
-      return res.status(200).json({ squids, pageCount });
-    }
-    const squids = await squidsQuery;
-    return res.status(200).json({ squids });
+    const pageCount = Math.ceil(totalSquidCount / limit);
+    return res.status(200).json({ squids, pageCount });
   })
 );
