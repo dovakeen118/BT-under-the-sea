@@ -1,11 +1,17 @@
-.squidList {
+.squid-list {
   @apply container mx-auto px-4;
-}
 
-.squidList__heading {
-  @apply text-center my-4;
-}
+  & .squid-list__heading {
+    @apply text-center my-4;
+  }
 
-.squidList__grid {
-  @apply flex flex-wrap content-center;
+  & .squid-list__grid {
+    @apply flex flex-wrap content-center;
+  }
+
+  & .squid-list__btn {
+    @apply fixed right-0 bottom-0;
+    @apply m-6 px-4 py-2 bg-peach border rounded text-white;
+    @apply hover:italic hover:cursor-pointer hover:border-peach;
+  }
 }

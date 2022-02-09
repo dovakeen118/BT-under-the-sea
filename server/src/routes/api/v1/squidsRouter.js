@@ -8,10 +8,10 @@ export const squidsRouter = new express.Router();
 squidsRouter.get(
   "/",
   nextWrapper(async (req, res) => {
-    const squids = await Squid.query();
-    const specialPowerOptions = Squid.jsonSchema.properties.specialPower.enum;
+    const squids = await Squid.query().orderBy("createdAt", "desc");
+    const specialPowers = Squid.jsonSchema.properties.specialPower.enum;
 
-    return res.status(200).json({ squids, specialPowerOptions });
+    return res.status(200).json({ squids, specialPowers });
   })
 );
 

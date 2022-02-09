@@ -1,3 +1,51 @@
-.squidForm-textInput {
-  @apply m-1 flex flex-wrap;
+.squid-form {
+  @apply grid grid-cols-2 gap-4 my-1 px-4;
+}
+
+.squid-form__heading {
+  @apply text-center;
+}
+
+.squid-form__label {
+  @apply grid grid-cols-4 gap-x-4 my-1;
+
+  & .squid-form__label-text {
+    @apply text-right;
+  }
+  & .squid-form__input {
+    @apply flex col-start-2 col-end-5;
+  }
+}
+
+.squid-form__radio-group {
+  @apply grid;
+
+  & .squid-form__radio-label {
+    @apply col-span-full;
+
+    & .squid-form__radio-btn {
+      @apply hover:cursor-pointer active:ring-peach;
+    }
+
+    & .squid-form__radio-btn:checked {
+      @apply bg-peach focus:ring-peach;
+    }
+
+    & .squid-form__radio-text {
+      @apply px-2;
+    }
+  }
+}
+
+.squid-form__error {
+  @apply col-start-2 col-span-full pb-1 italic;
+}
+
+.squid-form__btn-group {
+  @apply flex justify-center;
+
+  & .btn {
+    @apply mx-2 px-4 py-2 bg-peach border rounded text-white;
+    @apply hover:italic hover:cursor-pointer hover:border-peach;
+  }
 }
