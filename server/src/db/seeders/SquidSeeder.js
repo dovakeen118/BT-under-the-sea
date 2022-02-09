@@ -7,7 +7,7 @@ export class SquidSeeder {
     try {
       const squidFactory = new Factory(Squid);
 
-      await squidFactory.createMany(10);
+      await squidFactory.createMany(100);
 
       console.log("Squids successfully seeded");
     } catch (error) {
