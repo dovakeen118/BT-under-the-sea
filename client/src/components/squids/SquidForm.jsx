@@ -19,6 +19,7 @@ export const SquidForm = ({ specialPowers }) => {
       name: "",
       species: "",
       victories: 0,
+      specialPower: undefined,
     },
   });
 
@@ -31,7 +32,7 @@ export const SquidForm = ({ specialPowers }) => {
         className="squid-form__radio-btn"
         type="radio"
         id="none"
-        name="specialPowers"
+        name="specialPower"
         value={undefined}
         {...register("specialPower")}
       />
@@ -45,7 +46,7 @@ export const SquidForm = ({ specialPowers }) => {
         className="squid-form__radio-btn"
         type="radio"
         id={power}
-        name="specialPowers"
+        name="specialPower"
         value={power}
         {...register("specialPower")}
       />
@@ -60,6 +61,7 @@ export const SquidForm = ({ specialPowers }) => {
       name: "",
       species: "",
       victories: 0,
+      specialPower: undefined,
     });
   };
 
@@ -113,7 +115,7 @@ export const SquidForm = ({ specialPowers }) => {
               id="victories"
               type="number"
               min={0}
-              {...register("victories", { required: "Victories must be at least 0." })}
+              {...register("victories", { required: "Victories cannot be less than 0." })}
             />
             <p className="squid-form__error">
               <ErrorMessage errors={errors} name="victories" />
