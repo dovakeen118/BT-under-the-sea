@@ -1,6 +1,6 @@
 import express from "express";
 
-import { apiRouter } from "./apiRouter.js"
+import { apiRouter } from "./apiRouter.js";
 import { clientRouter } from "./clientRouter.js";
 
 export const rootRouter = new express.Router();
