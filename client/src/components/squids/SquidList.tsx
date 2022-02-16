@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 
 import { Pagination } from "../common/Pagination";
 import { useSquidList } from "./hooks/useSquidList";
@@ -9,7 +9,7 @@ import "../../style/squids/squidList.pcss";
 
 const itemsPerPage = 10;
 
-export const SquidList = () => {
+export const SquidList: FC = () => {
   const [pageNumber, setPageNumber] = useState(1);
   const [pageCount, setPageCount] = useState(1);
 
@@ -22,8 +22,8 @@ export const SquidList = () => {
     setPageCount(fetchedSquids?.pageCount);
   }, [fetchedSquids]);
 
-  const handlePageClick = (event) => {
-    setPageNumber(event.selected + 1);
+  const handlePageClick = ({ selected }: { selected: number }): void => {
+    setPageNumber(selected + 1);
   };
 
   const pageHeader = (
@@ -34,6 +34,10 @@ export const SquidList = () => {
 
   const squids = squidsData.map((squid) => <SquidInfo key={squid.id} {...squid} />);
 
+  const onRefreshClick = (): void => {
+    refetchSquids();
+  };
+
   return (
     <div className="squid-list">
       <h1 className="squid-list__heading">
@@ -42,7 +46,7 @@ export const SquidList = () => {
       <SquidForm />
       <div className="squid-list__grid">{squids}</div>
       <Pagination pageCount={pageCount} handlePageClick={handlePageClick} />
-      <button className="squid-list__btn" type="button" onClick={refetchSquids}>
+      <button className="squid-list__btn" type="button" onClick={onRefreshClick}>
         Refresh
       </button>
     </div>

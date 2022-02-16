@@ -1,10 +1,13 @@
-import React from "react";
+import React, { FC } from "react";
 
 import ReactPaginate from "react-paginate";
 
 import "../../style/common/pagination.pcss";
 
-export const Pagination = ({ pageCount = 1, handlePageClick }) => (
+export const Pagination: FC<{ pageCount: number; handlePageClick: any }> = ({
+  pageCount = 1,
+  handlePageClick,
+}) => (
   <ReactPaginate
     breakLabel="..."
     nextLabel="next"

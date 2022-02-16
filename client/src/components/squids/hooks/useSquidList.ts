@@ -1,8 +1,20 @@
-import { useQuery } from "react-query";
+import { useQuery, UseQueryResult } from "react-query";
 
 import { ApiClient } from "../../../backend/ApiClient";
+import { SquidShape } from "../../../types/SquidShape";
 
-export const useSquidList = ({ pageIndex, itemsPerPage }) =>
+interface SquidData {
+  pageCount: number;
+  squids: SquidShape[];
+}
+
+export const useSquidList = ({
+  pageIndex,
+  itemsPerPage,
+}: {
+  pageIndex: number;
+  itemsPerPage: number;
+}): UseQueryResult<SquidData> =>
   useQuery(
     ["squids", { pageIndex, itemsPerPage }],
     () =>

@@ -17,7 +17,7 @@ class Squid extends Model {
       properties: {
         name: { type: "string", minLength: 1 },
         species: { type: "string", minLength: 1 },
-        victories: { type: ["string", "integer"], default: 0 },
+        victories: { type: "integer", default: 0 },
 
         specialPower: {
           type: "string",

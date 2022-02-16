@@ -2,6 +2,7 @@ import express from "express";
 
 import { Squid } from "../../../models/index.js";
 import { cleanUserInput } from "../../../services/cleanUserInput.js";
+import { randomDate } from "../../../services/randomDate.js";
 import { nextWrapper } from "../../lib/nextWrapper.js";
 
 export const squidsRouter = new express.Router();
@@ -31,11 +32,26 @@ squidsRouter.get(
   })
 );
 
+squidsRouter.get(
+  "/:id",
+  nextWrapper(async (req, res) => {
+    const { id } = req.params;
+    const squid = await Squid.query().findById(id).throwIfNotFound();
+
+    return res.status(200).json({ squid });
+  })
+);
+
 squidsRouter.post(
   "/",
   nextWrapper(async (req, res) => {
     const squidData = req.body.squid;
-    const cleanedData = cleanUserInput(squidData);
+    squidData.victories = parseInt(squidData.victories);
+
+    const birthday = randomDate();
+    const data = { ...squidData, birthday };
+
+    const cleanedData = cleanUserInput(data);
     const squid = await Squid.query().insertAndFetch(cleanedData);
 
     return res.status(201).json(squid);

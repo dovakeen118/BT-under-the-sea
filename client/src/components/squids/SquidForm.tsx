@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 
 import { ErrorMessage } from "@hookform/error-message";
 import { useForm } from "react-hook-form";
@@ -9,18 +9,25 @@ import { useSquidPowers } from "./hooks/useSquidPowers";
 
 import "../../style/squids/squidForm.pcss";
 
-export const SquidForm = () => {
+interface SquidFormValues {
+  name: string;
+  specialPower: string;
+  species: string;
+  victories: number;
+}
+
+export const SquidForm: FC = () => {
   const {
     handleSubmit,
     register,
     reset: hookReset,
     formState: { errors },
-  } = useForm({
+  } = useForm<SquidFormValues>({
     defaultValues: {
       name: "",
+      specialPower: undefined,
       species: "",
       victories: 0,
-      specialPower: undefined,
     },
   });
 
@@ -57,16 +64,16 @@ export const SquidForm = () => {
     </label>,
   ];
 
-  const handleReset = () => {
+  const handleReset = (): void => {
     hookReset({
       name: "",
+      specialPower: undefined,
       species: "",
       victories: 0,
-      specialPower: undefined,
     });
   };
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: SquidFormValues): void => {
     createSquid(data, {
       onSuccess: () => {
         queryClient.invalidateQueries("squids");
