@@ -16,8 +16,8 @@ export const Pagination = ({ pageCount = 1, handlePageClick }) => (
     containerClassName="pagination"
     pageClassName="pagination__link"
     breakClassName="pagination__link"
-    nextClassName="pagination__btn pagination__btn-hover"
-    previousClassName="pagination__btn pagination__btn-hover"
+    nextClassName="pagination__btn"
+    previousClassName="pagination__btn"
     activeLinkClassName="pagination__link-active"
   />
 );

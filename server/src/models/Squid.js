@@ -5,6 +5,10 @@ class Squid extends Model {
     return "squids";
   }
 
+  static get specialPowerOptions() {
+    return ["ink", "camouflage", "bioluminescence"];
+  }
+
   static get jsonSchema() {
     return {
       type: "object",
@@ -13,11 +17,11 @@ class Squid extends Model {
       properties: {
         name: { type: "string", minLength: 1 },
         species: { type: "string", minLength: 1 },
-        victories: { type: "string" },
+        victories: { type: ["string", "integer"], default: 0 },
 
         specialPower: {
           type: "string",
-          enum: ["ink", "camouflage", "bioluminescence"],
+          enum: this.specialPowerOptions,
         },
       },
     };

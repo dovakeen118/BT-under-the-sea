@@ -10,7 +10,7 @@ env:
   POSTGRES_DB: under-the-sea_test
   PGHOST: 127.0.0.1
   PGUSER: postgres
-​
+
 jobs:
   lint_and_test:
     runs-on: ubuntu-latest
@@ -31,10 +31,10 @@ jobs:
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-​
+
     steps:
       - uses: actions/checkout@v2
-​
+
       - name: Read Node.js version to install from `.nvmrc`
         run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
         id: nvm
@@ -42,27 +42,28 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: "${{ steps.nvm.outputs.NVMRC }}"
-​
+
       - name: Install dependencies
         run: yarn install --frozen-lockfile
-​
+
       - name: Check server style
         working-directory: server
         run: yarn run lint:style
       - name: Check client style
         working-directory: client
         run: yarn run lint:style
+
       - name: Lint server
         working-directory: server
         run: yarn run lint
       - name: Lint client
         working-directory: client
         run: yarn run lint
-​
+
       - name: Run client test suite
         working-directory: client
         run: yarn run test --passWithNoTests
-​
+
       - name: Migrate Database
         run: NODE_ENV=test yarn run db:test:migrate
         working-directory: server

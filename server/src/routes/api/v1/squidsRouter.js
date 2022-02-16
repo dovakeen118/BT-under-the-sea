@@ -1,6 +1,7 @@
 import express from "express";
 
 import { Squid } from "../../../models/index.js";
+import { cleanUserInput } from "../../../services/cleanUserInput.js";
 import { nextWrapper } from "../../lib/nextWrapper.js";
 
 export const squidsRouter = new express.Router();
@@ -8,10 +9,10 @@ export const squidsRouter = new express.Router();
 squidsRouter.get(
   "/",
   nextWrapper(async (req, res) => {
-    const offset = req.query.offset || 0
-    const limit = req.query.limit || 10
-    
-    const squidsQuery = Squid.query();
+    const offset = req.query.offset || 0;
+    const limit = req.query.limit || 10;
+
+    const squidsQuery = Squid.query().orderBy("createdAt", "desc");
     const [totalSquidCount, squids] = await Promise.all([
       squidsQuery.resultSize(),
       squidsQuery.offset(offset).limit(limit),
@@ -19,5 +20,24 @@ squidsRouter.get(
 
     const pageCount = Math.ceil(totalSquidCount / limit);
     return res.status(200).json({ squids, pageCount });
+  })
+);
+
+squidsRouter.get(
+  "/special-powers",
+  nextWrapper(async (req, res) => {
+    const squidPowers = Squid.specialPowerOptions;
+    return res.status(200).json({ squidPowers });
+  })
+);
+
+squidsRouter.post(
+  "/",
+  nextWrapper(async (req, res) => {
+    const squidData = req.body.squid;
+    const cleanedData = cleanUserInput(squidData);
+    const squid = await Squid.query().insertAndFetch(cleanedData);
+
+    return res.status(201).json(squid);
   })
 );
