@@ -5,10 +5,11 @@ import { useForm } from "react-hook-form";
 import { useQueryClient } from "react-query";
 
 import { usePostSquid } from "./hooks/usePostSquid";
+import { useSquidPowers } from "./hooks/useSquidPowers";
 
 import "../../style/squids/squidForm.pcss";
 
-export const SquidForm = ({ specialPowers }) => {
+export const SquidForm = () => {
   const {
     handleSubmit,
     register,
@@ -23,10 +24,26 @@ export const SquidForm = ({ specialPowers }) => {
     },
   });
 
+  const { data: fetchedPowers } = useSquidPowers();
+  const specialPowers = fetchedPowers?.squidPowers || [];
+
   const { mutate: createSquid } = usePostSquid();
   const queryClient = useQueryClient();
 
-  const defaultSpecialPowerOption = [
+  const specialPowerRadioOptions = [
+    ...specialPowers.map((power) => (
+      <label key={power} className="squid-form__radio-label" htmlFor={power}>
+        <input
+          className="squid-form__radio-btn"
+          type="radio"
+          id={power}
+          name="specialPower"
+          value={power}
+          {...register("specialPower")}
+        />
+        <span className="squid-form__radio-text">{power}</span>
+      </label>
+    )),
     <label key="none" className="squid-form__radio-label" htmlFor="none">
       <input
         className="squid-form__radio-btn"
@@ -39,22 +56,6 @@ export const SquidForm = ({ specialPowers }) => {
       <span className="squid-form__radio-text">none</span>
     </label>,
   ];
-
-  const specialPowerOptions = specialPowers.map((power) => (
-    <label key={power} className="squid-form__radio-label" htmlFor={power}>
-      <input
-        className="squid-form__radio-btn"
-        type="radio"
-        id={power}
-        name="specialPower"
-        value={power}
-        {...register("specialPower")}
-      />
-      <span className="squid-form__radio-text">{power}</span>
-    </label>
-  ));
-
-  const specialPowerRadioOptions = specialPowerOptions?.concat(defaultSpecialPowerOption);
 
   const handleReset = () => {
     hookReset({

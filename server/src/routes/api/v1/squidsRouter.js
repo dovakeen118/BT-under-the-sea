@@ -9,8 +9,6 @@ export const squidsRouter = new express.Router();
 squidsRouter.get(
   "/",
   nextWrapper(async (req, res) => {
-    const specialPowers = Squid.jsonSchema.properties.specialPower.enum;
-
     const offset = req.query.offset || 0;
     const limit = req.query.limit || 10;
 
@@ -21,7 +19,15 @@ squidsRouter.get(
     ]);
 
     const pageCount = Math.ceil(totalSquidCount / limit);
-    return res.status(200).json({ squids, specialPowers, pageCount });
+    return res.status(200).json({ squids, pageCount });
+  })
+);
+
+squidsRouter.get(
+  "/special-powers",
+  nextWrapper(async (req, res) => {
+    const squidPowers = Squid.specialPowerOptions;
+    return res.status(200).json({ squidPowers });
   })
 );
 
