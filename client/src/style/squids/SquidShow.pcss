@@ -1,0 +1,35 @@
+.squid-show {
+  @apply container mx-auto mt-8 py-5 bg-white shadow-md border border-peach rounded;
+
+  & .squid-info {
+    @apply grid grid-cols-4 gap-4 mt-4;
+
+    & .squid-info__header {
+      @apply font-bold;
+    }
+
+    & .squid-info__text {
+      @apply font-normal;
+    }
+
+    & .squid-info__text-italic {
+      @apply font-normal italic whitespace-nowrap;
+    }
+
+    & .fact-list {
+      @apply font-normal italic;
+    }
+
+    & .squid-details {
+      @apply grid col-start-2 content-start gap-y-4;
+    }
+
+    & .squid-sign {
+      @apply grid col-start-3 justify-center gap-y-4;
+    }
+  }
+}
+
+.squid__heading {
+  @apply text-center;
+}

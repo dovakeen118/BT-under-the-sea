@@ -1,6 +1,7 @@
 import { Factory } from "rosie";
 
 import { Squid } from "../../src/models/index.js";
+import { randomDate } from "../../src/services/randomDate.js";
 
 const chooseRandomSpecies = () => {
   const species = [
@@ -16,6 +17,7 @@ const chooseRandomSpecies = () => {
 Factory.define("Squid", Squid)
   .sequence("name", (i) => `Squid ${i}`)
   .attr("species", chooseRandomSpecies)
-  .attr("victories", () => Math.floor(Math.random() * 100).toString());
+  .attr("victories", () => Math.floor(Math.random() * 100))
+  .attr("birthday", () => randomDate());
 
 export { Factory };

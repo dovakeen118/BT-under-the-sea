@@ -1,10 +1,10 @@
-import React from "react";
+import React, { FC } from "react";
 
 import { Link } from "react-router-dom";
 
 import "../../style/layouts/topBar.pcss";
 
-export const TopBar = () => (
+export const TopBar: FC = () => (
   <nav className="top-bar">
     <div className="top-bar-home">
       <svg
@@ -23,6 +23,9 @@ export const TopBar = () => (
       <div className="navigation__links">
         <Link to="/" className="navigation__link">
           Home
+        </Link>
+        <Link to="/squids" className="navigation__link">
+          Squids
         </Link>
       </div>
 
