@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa&display=swap");
+
+.footer {
+  @apply flex flex-wrap place-items-center justify-center lg:justify-between;
+  @apply mx-auto p-6 shadow-lg;
+}
+.footer-home {
+  @apply flex items-center flex-shrink-0 my-4 mr-6;
+
+  & .footer__icon {
+    @apply h-8 w-8 mr-2;
+    font-family: "Comfortaa";
+  }
+}
+
+.footer__title {
+  @apply font-semibold text-xl tracking-tight;
+}
+
+.footer__links {
+  & .footer__link {
+    @apply my-4 mx-2 font-black;
+  }
+}
+
+.footer__copyright {
+  @apply my-4 font-thin text-slate-500;
+}

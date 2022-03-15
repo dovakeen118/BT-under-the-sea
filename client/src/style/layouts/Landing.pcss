@@ -1,0 +1,85 @@
+.landing {
+  @apply container mx-auto;
+
+  & .landing__hero {
+    @apply grid grid-cols-1 md:grid-cols-2;
+
+    & .landing__welcome {
+      @apply mx-10 my-auto;
+
+      & .landing__greeting {
+        @apply text-right;
+      }
+
+      & .landing__navigation {
+        @apply my-8 text-center;
+      }
+    }
+
+    & .landing__info {
+      @apply bg-peach p-4 rounded;
+
+      & .landing__image {
+        @apply rounded;
+      }
+
+      & .landing__image-heading {
+        @apply font-black py-4;
+      }
+    }
+  }
+
+  & .favorites {
+    @apply text-center mb-8;
+
+    & .favorites__heading {
+      @apply my-8 font-thin;
+    }
+
+    & .favorite-squids {
+      @apply grid grid-cols-1;
+      @apply lg:grid-cols-3 lg:gap-4;
+
+      & .favorite-squids__tile {
+        & .favorite-squids__image {
+          @apply mx-auto;
+          @apply object-cover h-72 w-72 rounded-full;
+        }
+
+        & .favorite-squids__name {
+          @apply my-4 font-bold;
+        }
+      }
+    }
+  }
+
+  & .squid-facts {
+    @apply lg:grid lg:grid-cols-2;
+    @apply p-4 lg:p-0 rounded;
+
+    & .squid-facts__image {
+      @apply max-w-full lg:max-w-sm h-auto my-8 mx-auto rounded shadow-lg;
+    }
+
+    & .squid-facts__body {
+      @apply my-auto mx-4 lg:mx-auto;
+
+      & .squid-facts__heading {
+        @apply pb-4 font-bold;
+      }
+
+      & li {
+        @apply list-disc ml-4;
+      }
+    }
+  }
+
+  & .right {
+    @apply flex flex-col-reverse mt-4 text-right;
+    @apply lg:grid;
+  }
+
+  & .left {
+    @apply bg-peach shadow-lg;
+  }
+}

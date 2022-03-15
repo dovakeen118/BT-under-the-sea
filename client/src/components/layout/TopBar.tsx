@@ -3,6 +3,7 @@ import React, { FC } from "react";
 import { Link } from "react-router-dom";
 
 import "../../style/layouts/topBar.pcss";
+import "../../style/common/navButton.pcss";
 
 export const TopBar: FC = () => (
   <nav className="top-bar">
@@ -29,8 +30,11 @@ export const TopBar: FC = () => (
         </Link>
       </div>
 
-      <div>
-        <a href="#sign-up" className="navigation__user">
+      <div className="navigation__btns">
+        <a href="#log-in" className="navigation__btn navigation__btn-teal">
+          Log in
+        </a>
+        <a href="#sign-up" className="navigation__btn navigation__btn-white">
           Sign up
         </a>
       </div>

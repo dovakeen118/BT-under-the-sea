@@ -1,5 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa&display=swap");
+
 .top-bar {
-  @apply flex items-center justify-between flex-wrap bg-teal p-6 shadow-md mb-2;
+  @apply flex flex-wrap items-center justify-between;
+  @apply bg-teal p-6 shadow-lg mb-2;
+  @apply sticky top-0 z-50;
 }
 .top-bar-home {
   @apply flex items-center flex-shrink-0 text-white mr-6;
@@ -7,6 +11,7 @@
 
 .top-bar__icon {
   @apply fill-current h-8 w-8 mr-2;
+  font-family: "Comfortaa";
 }
 
 .top-bar__title {
@@ -14,7 +19,8 @@
 }
 
 .navigation {
-  @apply w-full block flex-grow lg:flex lg:items-center lg:w-auto;
+  @apply w-full flex-grow;
+  @apply lg:flex lg:items-center lg:w-auto;
 }
 
 .navigation__links {
@@ -23,9 +29,4 @@
 
 .navigation__link {
   @apply block mt-4 lg:inline-block lg:mt-0 hover:text-white mr-4;
-}
-
-.navigation__user {
-  @apply inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white  mt-4 lg:mt-0;
-  @apply hover:border-transparent hover:text-teal hover:bg-white;
 }

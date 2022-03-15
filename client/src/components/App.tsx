@@ -6,6 +6,8 @@ import { QueryClientProvider, QueryClient } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
+import { Footer } from "./layout/Footer";
+import { Landing } from "./layout/Landing";
 import { TopBar } from "./layout/TopBar";
 import { SquidList } from "./squids/SquidList";
 import { SquidShow } from "./squids/SquidShow";
@@ -28,9 +30,11 @@ const App: FC = () => {
       <Router>
         <TopBar />
         <Switch>
+          <Route exact path="/" component={Landing} />
           <Route exact path="/squids" component={SquidList} />
           <Route exact path="/squids/:id" component={SquidShow} />
         </Switch>
+        <Footer />
       </Router>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
